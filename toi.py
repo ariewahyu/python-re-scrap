@@ -1,7 +1,7 @@
 import urllib
 import re
 from PIL import Image
-url='http://timesofindia.indiatimes.com/india/Punjab-terror-attack-GPS-points-to-Pakistan-angle/articleshow/48247219.cms'
+url='http://timesofindia.indiatimes.com/sports/football/interviews/FIFAs-Blatter-deserves-Nobel-prize-says-Putin/articleshow/48251693.cms'
 htmltext = urllib.urlopen(url).read()
 # bs = BeautifulSoup(htmltext)
 # for tag in bs.findAll('div',{'class':'widget storyContent article'}):
@@ -30,11 +30,11 @@ data=re.findall(tit_pattern,htmltext)
 title=data[0]
 print title
 #scraping image for that particular article
-img_pattern = re.compile('src="http://timesofindia.indiatimes.com(.+?)">')
+img_pattern = re.compile('src="http://timesofindia.indiatimes.com(.+?).jpg')
 data=re.findall(img_pattern,htmltext)
 for img in data:
-	if('jpg' in img):
- 		urllib.urlretrieve('http://timesofindia.indiatimes.com'+img,'/home/umangjain/Downloads/'+title+'.jpg')
+ 		urllib.urlretrieve('http://timesofindia.indiatimes.com'+img+'.jpg','/home/umangjain/Downloads/'+title+'.jpg')
+ 		# print('Start-http://timesofindia.indiatimes.com'+img+'.jpg-end')
  		img = Image.open('/home/umangjain/Downloads/'+title+'.jpg')
  		img = img.resize((708,350),2)
  		img.save('/home/umangjain/Downloads/news/img/'+title+'.jpg','JPEG')
