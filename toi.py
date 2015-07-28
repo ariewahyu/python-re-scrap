@@ -1,6 +1,7 @@
 import urllib
 import re
-url='http://timesofindia.indiatimes.com/entertainment/english/Bobbi-Kristina-Brown-daughter-of-Whitney-Houston-dies/articleshow/48230996.cms'
+from PIL import Image
+url='http://timesofindia.indiatimes.com/india/Punjab-terror-attack-GPS-points-to-Pakistan-angle/articleshow/48247219.cms'
 htmltext = urllib.urlopen(url).read()
 # bs = BeautifulSoup(htmltext)
 # for tag in bs.findAll('div',{'class':'widget storyContent article'}):
@@ -33,4 +34,7 @@ img_pattern = re.compile('src="http://timesofindia.indiatimes.com(.+?)">')
 data=re.findall(img_pattern,htmltext)
 for img in data:
 	if('jpg' in img):
- 		urllib.urlretrieve('http://timesofindia.indiatimes.com'+img,'/home/umangjain/Desktop/'+title+'.jpg')
+ 		urllib.urlretrieve('http://timesofindia.indiatimes.com'+img,'/home/umangjain/Downloads/'+title+'.jpg')
+ 		img = Image.open('/home/umangjain/Downloads/'+title+'.jpg')
+ 		img = img.resize((708,350),2)
+ 		img.save('/home/umangjain/Downloads/news/img/'+title+'.jpg','JPEG')
