@@ -61,7 +61,7 @@ try:
 			 		img = Image.open('/home/umangjain/Downloads/'+title+'.jpg')
 			 		img = img.resize((708,350),2)
 			 		img.save('/home/umangjain/Downloads/news/img/'+title+'.jpg','JPEG')
-		except Exception as e:
+		catch Exception as e:
 			pass
 except Exception as e:
 	error = 1
